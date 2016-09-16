@@ -1,11 +1,26 @@
-//
+// -----------------------------------------------------------------------------
 //  HashMap.h
 //
 //  Created by Barrett Davis on 8/8/16.
 //  Needed because std::map and std::unordered_map have compile time errors.
 //  Copyright © 2016 Tree Frog Software. All rights reserved.
+// -----------------------------------------------------------------------------
+// The HashMap contains key,value pairs.
 //
-
+// This HashMap ignores duplicates.  I guess that fact really makes it a HashSet.
+// If you want HashMap to allow duplicates, you can modify the add() method, or 
+// create an additional additional method.
+//
+// This HashMap consists of an array that contains pointers to nodes.
+// A hash function is used to generate an reproducible index into this array.
+// The node found at an array index may form a singly linked list of nodes.
+// Each list of nodes are independent.
+//
+// To find if a value is present in our HashMap, we generate an index into the array using
+// the hash function.  Then we traverse through the singly linked list of nodes, looking 
+// for a value that matches the target value.  We we reach the end of the node list, then
+// the value is not present in our collection.
+// -----------------------------------------------------------------------------
 #ifndef HashMap_h
 #define HashMap_h
 
@@ -20,7 +35,7 @@ namespace tfs {
     public:
         Key key;
         T   value;
-        HashNode<Key,T> *next;
+        HashNode<Key,T> *next;	// This points to the next node in the list.
     public:
         HashNode( Key key, T value ) : key( key ), value( value ),next(0) {}
         void deleteValue( void ) { delete value; value = 0; }   // Only needed if T is a pointer.
@@ -28,6 +43,7 @@ namespace tfs {
 
     template< class Key, class T >
     using HashNodePtr = HashNode<Key,T>*;
+    
     
     template< class Key, class T > class HashMap {
     protected:
