@@ -11,6 +11,8 @@ The table size of the HashMap can be configured when calling the constructor.
 
 Note that I still use the std::hash function, as it works well for me.
 
+This HashMap does not allow duplicates, so I suppose it really should be called HashSet.
+
 IndexMap
 
 IndexMap is a small extension to HashMap that I use to create a set of unique items.  
