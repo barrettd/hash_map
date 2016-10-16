@@ -16,4 +16,4 @@ This HashMap does not allow duplicates, so I suppose it really should be called 
 IndexMap
 
 IndexMap is a small extension to HashMap that I use to create a set of unique items.  
-Each key item is assigned a unique id during insertion.  Duplicates are not allowed.
+Each key item is assigned a unique sequential id during insertion.  Duplicates are not allowed.
